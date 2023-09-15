@@ -1,5 +1,4 @@
 import streamlit as st
-import logging
 from langchain.llms import CTransformers
 from langchain.chains import LLMChain
 from langchain import PromptTemplate
@@ -24,7 +23,7 @@ def load_model():
         model=repo_id,
         repo_type=repo_type,
         model_type="llama",
-        max_new_tokens=512,
+        max_new_tokens=4096,
         temperature=0.05,
         repetition_penalty=1.4
     )
@@ -51,19 +50,11 @@ query = st.text_area("Enter your coding query:")
 if st.button("Submit"):
     if query:
         try:
-            # Log the user's query
-            logging.info(f"User query: {query}")
-
             bot_message = bot(query)
-
-            # Log the AI's response
-            logging.info(f"AI response: {bot_message}")
 
             st.write("AI Response:")
             st.write(bot_message)
         except Exception as e:
-            # Log errors
-            logging.error(f"Error: {str(e)}")
             st.error(f"An error occurred: {str(e)}")
     else:
         st.warning("Please enter a query.")
