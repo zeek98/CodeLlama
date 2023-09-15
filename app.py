@@ -27,7 +27,7 @@ def load_model():
         model=repo_id,
         repo_type=repo_type,
         model_type="llama",
-        max_new_tokens=4096,
+        max_new_tokens=512,
         temperature=0.05,
         repetition_penalty=1.4
     )
