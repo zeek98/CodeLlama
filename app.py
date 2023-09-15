@@ -4,9 +4,6 @@ from langchain.llms import CTransformers
 from langchain.chains import LLMChain
 from langchain import PromptTemplate
 
-# Configure the logger
-logging.basicConfig(filename='chatbot.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
 custom_prompt_template = """
 You are an AI Coding Assistant, and your task is to solve coding problems and return code snippets based on the given user's query. Below is the user's query.
 Query: {query}
